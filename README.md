@@ -16,10 +16,23 @@ $ docker run -p 8080:8080 -p 50000:50000 jenkinsci/blueocean
 >Note: This will store the workspace in /var/jenkins_home. All Jenkins data lives in there - including plugins and configuration.
 
 If you want to make that a persistent volume (recommended):
+
 ```shell
 $ docker run -p 8080:8080 -p 50000:50000 -v ~/Users/<your-home-name>:/var/jenkins_home jenkinsci/blueocean
 ```
->Note: This will store the jenkins data in /your/home on the host. Ensure that /your/home is accessible by the jenkins user in container (jenkins user - uid 1000) or use -u some_other_user parameter with docker run. 
+
+>Note: This will store the jenkins data in /your/home on the host. Ensure that /your/home is accessible by the jenkins user in container (jenkins user - uid 1000) or use -u some_other_user parameter with docker run.
+
+## Install with Homebrew
+
+```shell
+$ brew update
+$ brew install jenkins
+$ jenkins #now visit http://localhost:8080
+```
+
+>Note: If you use a docker-image for your build make sure your host system has docker up and running
+
 
 ## Setting up Jenkins
 
@@ -33,3 +46,37 @@ Check your console for the initial password:
 <br/> Image source: https://i.stack.imgur.com/kNhMQ.png
 
 Follow the instructions and install the plugins you need.
+
+## Install Blue Ocean
+
+* Click on `Manage Jenkins`
+* Click `Manage Plugins`
+* Search for available plugins `blue ocean`
+* Click `Download now and install after restart`gst
+
+## Set up Blue Ocean
+
+* Open Blue Ocean
+* Choose between git or github
+* connect to github via access token (generate @ github)
+* choose organization
+* choose  create pipeline from single repo
+* select the desired repo
+* create pipeline
+
+## Advantages compared to Concourse CI
+
+* The installation of Jenkins is way easier compared to Concourse.
+  * installation via brew
+* The configuration of the pipeline is easier compared to Concourse.
+  * it is a simple UI
+  * concourse uses fly-cli
+* The Jenkins configuration file is easier to read compared to Concourse.
+
+## Disadvantages compared to Concourse CI
+
+* Jenkins Blue Ocean pipeline is less intuitive compared to Concourse CI.
+  * Concourse is minimalistic, which can be a good thing sometimes
+  * Jenkins Blue Ocean UI is not as satisfying as Concourse CI.
+  * Jenkins without Blue Ocean has an old fashioned UI.
+
