@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('commit-stage') {
             steps {
-                sh 'apt-get update -qq && apt-get install -y build-essential nodejs'
                 sh 'bundle install'
                 sh 'rspec'
             }
@@ -11,7 +10,6 @@ pipeline {
 
         stage('security-check-stage') {
             steps {
-                sh 'apt-get update -qq && apt-get install -y build-essential nodejs'
                 sh 'bundle install'
                 sh 'bundle exec brakeman -z'
             }
