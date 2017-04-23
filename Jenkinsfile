@@ -1,5 +1,3 @@
-properties([gitLabConnection('git@git.mediacube.at:menow/app.git')])
-
 pipeline {
     agent { docker 'ruby:2.3.3' }
     stages {
