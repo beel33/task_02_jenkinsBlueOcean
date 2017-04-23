@@ -2,27 +2,6 @@
 * implement the Concourse example from task 1 in Jenkins Blue Ocean
 * describe the differences and advantages/disadvantages of the CI system compared to Concourse (concerning only your implementation of the task 1 in the CI system, as a PDF)
 
-## Install and run Jenkins Blue Ocean with Docker
-
-Pull the official Jenkins Blue Ocean image from Docker
-```shell
-$ docker pull jenkinsci/blueocean
-```
-
-Run the Image
-```shell
-$ docker run -p 8080:8080 -p 50000:50000 jenkinsci/blueocean
-```
->Note: This will store the workspace in /var/jenkins_home. All Jenkins data lives in there - including plugins and configuration.
-
-If you want to make that a persistent volume (recommended):
-
-```shell
-$ docker run -p 8080:8080 -p 50000:50000 -v ~/Users/<your-home-name>:/var/jenkins_home jenkinsci/blueocean
-```
-
->Note: This will store the jenkins data in /your/home on the host. Ensure that /your/home is accessible by the jenkins user in container (jenkins user - uid 1000) or use -u some_other_user parameter with docker run.
-
 ## Install with Homebrew
 
 ```shell
